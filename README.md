@@ -6,25 +6,27 @@ Add the AnimatingBanner folder to your project. The folder consits of 2 files: B
 You can initialize the banner by loading it from the Nib as given below
 
 - Declare a variable bannerView in your class.
-    `var bannerView: Banner?`
+`var bannerView: Banner?`
 
 - Load it from Nib 
-    `bannerView = Bundle.main.loadNibNamed("Banner", owner: self, options: nil)?.first as? Banner`
+`bannerView = Bundle.main.loadNibNamed("Banner", owner: self, options: nil)?.first as? Banner`
 
 
 - Call the displayBanner() method by passing the "bannerText" parameter (message to be displayed). The parameter "parentView" is optional. If you don't provide this, the banner will be added to the UIWindow.
-    
-    `
+
+
+```
     bannerView?.displayBanner(parentView: self.view, bannerText: "Hey There! This is a test banner example.", onCompletion: { [weak self] in
         self?.removeBannerView()
     })
-    `
+```
 
 
 
 - Make sure you remove the existing banner by calling the below method before adding a new banner.
 
-    `
+
+```
     func removeBannerView() {
 
         if bannerView != nil {
@@ -33,13 +35,14 @@ You can initialize the banner by loading it from the Nib as given below
             bannerView = nil
         }
     }
-    `
+```
 
 
 
 - Also, It is better to have a method in BaseVC that can be called from all view controllers if you will be using this component across the app.
 
-    `
+
+```
     func showBanner(text : String?) {
 
         removeBannerView()
@@ -50,9 +53,9 @@ You can initialize the banner by loading it from the Nib as given below
             self?.removeBannerView()
         })
     }
-    `
+```
 
 
 - NOTE:
-    - Language used is Swift 3.0.2
-    - Feel free to report any issues.
+- Language used is Swift 3.0.2
+- Feel free to report any issues.
